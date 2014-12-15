@@ -1,0 +1,15 @@
+{
+  "name": "MyRobot",
+  "version": "0.0.0",
+  "description": "This is a web interface to roll with my robot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/elisium/my-robot-pi.git"
+  },
+  "author": "redbeard",
+  "license": "DWAFYW"
+}
