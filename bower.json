@@ -1,0 +1,23 @@
+{
+  "name": "my-robot-pi",
+  "version": "0.0.0",
+  "main": "app.js",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "authors": [
+    "redbeard"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}

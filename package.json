@@ -11,5 +11,10 @@
     "url": "ssh://git@bitbucket.org/elisium/my-robot-pi.git"
   },
   "author": "redbeard",
-  "license": "DWAFYW"
+  "license": "DWAFYW",
+  "dependencies": {
+    "express": "^4.10.6",
+    "onoff": "^1.0.2",
+    "r-pi-usonic": "^2.4.1"
+  }
 }
