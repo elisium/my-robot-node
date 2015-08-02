@@ -84,7 +84,7 @@ function stopStreaming() {
 /*fs.watchFile('./public/stream.jpg', function(current, previous) {
   io.sockets.emit('stream', 'stream.jpg?_t=' + (Math.random() * 100000));
 })*/
-setInterval (function () {io.sockets.emit('stream', 'stream.jpg?_t=' + (Math.random() * 100000));}, 500);
+setInterval (function () {io.sockets.emit('stream', 'snapshot.jpeg?_t=' + (Math.random() * 100000));}, 500);
 
 var server = http.listen(3000, function () {
 
