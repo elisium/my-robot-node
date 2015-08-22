@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="jquery/dist/jquery.js"></script>
 	<script src="socket.io-client/socket.io.js"></script>
+	<script src="js/rtc.js"></script>
 	<script src="js/main.js"></script>
 	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
@@ -39,7 +40,7 @@
 					<p><span id="distance"></span> cm</p>
 					<h5>Camera stream:</h5>
 					<p>
-						<img id="stream" src="snapshot.jpeg" class="img-responsive" alt="stream" />
+						<video id='remote-video' autoplay='' width="100%"></video>
 					</p>
 				</div>
 			</div>
