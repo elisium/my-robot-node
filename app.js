@@ -5,8 +5,8 @@ var http = require('http').createServer(app);
 var io = require('socket.io').listen(http);
 var fs = require('fs');
 var path = require('path');
-var usonic = require('r-pi-usonic');
-var sensor = usonic.createSensor(24, 23);
+//var usonic = require('r-pi-usonic');
+//var sensor = usonic.createSensor(24, 23);
 var proc;
 
 var s1 = new IO(19, 'out'); // speed
@@ -64,7 +64,7 @@ io.on('connection', function(socket) {
 	});
 });
 
-setInterval(function(){console.log('distance:', sensor())}, 2000);
+//setInterval(function(){console.log('distance:', sensor())}, 2000);
 
 var server = http.listen(3000, function () {
 

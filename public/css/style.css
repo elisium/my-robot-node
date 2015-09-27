@@ -1,7 +1,38 @@
+body {
+	text-shadow: 0 0 1px #fff;
+	font-weight: bold;
+}
+
 .glyphicon-arrow-up,
 .glyphicon-arrow-down {
 	margin: 5px 55px;
 }
 .glyphicon-stop {
 	visibility: hidden;
+}
+
+#camera-stream {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+#camera-stream-img {
+	width: 100%;
+}
+
+.robot-controls {
+	padding: 0;
+	float: left;
+}
+
+.robot-info {
+	padding: 0;
+	float: right;
+}
+
+button {
+	opacity: .5;
 }

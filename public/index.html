@@ -5,23 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="jquery/dist/jquery.js"></script>
 	<script src="socket.io-client/socket.io.js"></script>
-	<script src="js/rtc.js"></script>
 	<script src="js/main.js"></script>
 	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+<div id='camera-stream'><img id='camera-stream-img' src=''/></div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-			<h1>Robot interface</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6 robot-controls">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Movement</h2>
+					<h3>Movement</h3>
 					<p>
 						<button id="forward" class="btn btn-lg glyphicon glyphicon-arrow-up"></button><br />
 						<button id="left" class="btn btn-lg glyphicon glyphicon-arrow-left"></button>
@@ -32,16 +27,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 robot-info">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Info</h2>
-					<h5>Distance to first obstacle:</h5>
+					<h3>Info</h3>
+					<p>Distance to first obstacle:</p>
 					<p><span id="distance"></span> cm</p>
-					<h5>Camera stream:</h5>
-					<p>
-						<video id='remote-video' autoplay='' width="100%"></video>
-					</p>
 				</div>
 			</div>
 		</div>
