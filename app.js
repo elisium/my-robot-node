@@ -5,14 +5,41 @@ var http = require('http').createServer(app);
 var io = require('socket.io').listen(http);
 var fs = require('fs');
 var path = require('path');
-//var usonic = require('r-pi-usonic');
-//var sensor = usonic.createSensor(24, 23);
-var proc;
+var i2c = require('i2c');
+var accelAddress = 0x1e;
+var accelWire = new i2c(accelAddress, {device: '/dev/i2c-1'});
+var usonic = require('r-pi-usonic');
+var sensor;
+var sonicInterval;
+
+usonic.init(function (error) {
+	if(error) {
+		console.error(error.toString());
+	} else {
+		sensor = usonic.createSensor(5, 4, 450);
+		console.log('Usonic initialized!')
+	}
+});
 
 var s1 = new IO(19, 'out'); // speed
 var s2 = new IO(13, 'out');
 var m1 = new IO(6, 'out'); // direction
 var m2 = new IO(26, 'out');
+
+function emitAccelData(err, data) {
+	io.emit('accelerometer', {
+		x: parseInt(data[0]) * 256 + parseInt(data[1]),
+		y: parseInt(data[2]) * 256 + parseInt(data[3]),
+		z: parseInt(data[4]) * 256 + parseInt(data[5])
+	});
+}
+
+accelWire.write([0x02, 0x00], function (){});
+var sensorsPollInterval = setInterval(function () {
+	accelWire.write([0x03], function(){});
+	accelWire.read(6, emitAccelData);
+	io.emit('distance', sensor());
+}, 2000);
 
 var loadLED = new IO(22, 'out') // LED signalizing on server start
 loadLED.writeSync(0);
@@ -59,12 +86,10 @@ app.get('/', function (req, res) {
 io.on('connection', function(socket) {
 	socket.on('engines', function(data) {
 		try {
-			robot[data]()
-		} catch(err) {}
+			robot[data]();
+		} catch(err) {console.error('No such engines method', err.toString())}
 	});
 });
-
-//setInterval(function(){console.log('distance:', sensor())}, 2000);
 
 var server = http.listen(3000, function () {
 
